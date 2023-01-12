@@ -1,13 +1,16 @@
-import '../styles/globals.css';
-import Head from 'next/head';
+import "../styles/globals.css";
+// import Head from 'next/head';
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App({ Component, pageProps }) {
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Next.js App</title>
-      </Head>
-      <Component {...pageProps} />
+      </Head> */}
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
     </>
   );
 }
