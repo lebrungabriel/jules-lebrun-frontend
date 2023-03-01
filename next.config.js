@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
     domains: [],
+    loader: "cloudinary",
+    path: "https://res.cloudinary.com/dgzq3bicw/image/upload",
+    unoptimized: true,
   },
 };
 

@@ -1,10 +1,11 @@
 import React from "react";
-import { useDisclosure } from "@chakra-ui/react";
+import { useState } from "react";
 import Link from "next/link";
 import DrawerNav from "./Drawer";
+import ChakraDrawer from "./ChakraDrawer";
 
 const Navbar = () => {
-  const { isOpen, onClose } = useDisclosure();
+  const [showSidebar, setShowSidebar] = useState(false);
 
   return (
     <>
@@ -16,7 +17,7 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <DrawerNav isOpen={isOpen} onClose={onClose} />
+        <ChakraDrawer />
 
         <div className="hidden md:flex md:justify-evenly w-full">
           <div className="h-[40px] w-[150px] flex justify-center hover-underline-animation">
@@ -26,19 +27,19 @@ const Navbar = () => {
           </div>
 
           <div className="h-[40px] w-[150px] flex justify-center hover-underline-animation">
-            <a href="/photo" className="md:text-lg lg:text-xl xl:text-xl">
+            <a href="/clips" className="md:text-lg lg:text-xl xl:text-xl">
               Clips
             </a>
           </div>
 
           <div className="h-[40px] w-[150px] flex justify-center hover-underline-animation">
-            <a href="/photo" className="md:text-lg lg:text-xl xl:text-xl">
+            <a href="/cover" className="md:text-lg lg:text-xl xl:text-xl">
               Cover
             </a>
           </div>
 
           <div className="h-[40px] w-[150px] flex justify-center hover-underline-animation">
-            <a href="/photo" className="md:text-lg lg:text-xl xl:text-xl">
+            <a href="/films" className="md:text-lg lg:text-xl xl:text-xl">
               Films
             </a>
           </div>

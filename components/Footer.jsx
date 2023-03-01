@@ -5,8 +5,9 @@ import { GrMail } from "react-icons/gr";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col justify-center items-center h-[200px] w-screen">
-      <ul className="flex justify-around items-center w-full">
+    <footer className="flex flex-col justify-center items-center h-[200px] w-screen p-2 mt-10">
+      <div className="h-[1px] w-[50%] bg-gray-400"></div>
+      <ul className="flex justify-around bt-1 items-center w-full  w-full h-full">
         <li className="flex flex-col items-center justify-center">
           <a href="#">
             <AiFillInstagram className="w-[30px] h-[30px] text-zinc-800 mb-2 hover:text-zinc-600" />
