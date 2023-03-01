@@ -15,7 +15,7 @@ const PhotoContainer = () => {
 
     formData.append("photoFromFront", imageUpload);
 
-    fetch("http://localhost:3000/upload", {
+    fetch("https://jules-lebrun-backend.vercel.app/upload", {
       method: "POST",
       body: formData,
     })
@@ -27,14 +27,14 @@ const PhotoContainer = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/images")
+    fetch("https://jules-lebrun-backend.vercel.app/images")
       .then((response) => response.json())
       .then((data) => setImageData(data.images));
   }, []);
 
   const deleteImageHandler = (image) => {
     const imageId = image._id;
-    fetch(`http://localhost:3000/delete/${imageId}`, {
+    fetch(`https://jules-lebrun-backend.vercel.app/delete/${imageId}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
