@@ -1,5 +1,6 @@
 import React from "react";
-import Image from "next/image";
+// import Image from "next/image";
+import { Image } from "@chakra-ui/react";
 import yassine01 from "../images/yassine01.jpg";
 import antoine02 from "../images/antoine02.jpg";
 import antoine03 from "../images/antoine03.jpg";
