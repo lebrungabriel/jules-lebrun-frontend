@@ -1,49 +1,50 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import { BsFillTrashFill, BsCloudUpload } from "react-icons/bs";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { Image } from "@chakra-ui/react";
+
 import { Progress } from "@chakra-ui/react";
 
-const PhotoContainer = () => {
+export default function PhotoContainer() {
   const [imageUpload, setImageUpload] = useState("");
-  const [imageData, setImageData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [displayImages, setDisplayImages] = useState([]);
 
   const uploadImageHandler = () => {
+    const data = new FormData();
+    data.append("file", imageUpload);
+    data.append("upload_preset", "juleslebrunsite");
+    data.append("cloud_name", "dgzq3bicw");
+
     setIsLoading(true);
-    const formData = new FormData();
 
-    formData.append("photoFromFront", imageUpload);
-
-    fetch("https://jules-lebrun-backend.vercel.app/upload", {
+    fetch("https://api.cloudinary.com/v1_1/dgzq3bicw/image/upload", {
       method: "POST",
-      body: formData,
+      body: data,
     })
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
-        setImageData([...imageData, data.image]);
+        setDisplayImages((prevImages) => [...prevImages, data.url]);
+        uploadUrlOnDB(data.url);
         setIsLoading(false);
       });
   };
 
-  useEffect(() => {
-    fetch("https://jules-lebrun-backend.vercel.app/images")
-      .then((response) => response.json())
-      .then((data) => setImageData(data.images));
-  }, []);
-
-  const deleteImageHandler = (image) => {
-    const imageId = image._id;
-    fetch(`https://jules-lebrun-backend.vercel.app/delete/${imageId}`, {
-      method: "DELETE",
-    })
-      .then((response) => response.json())
-      .then(() => {
-        setImageData((prevImageData) =>
-          prevImageData.filter((img) => img._id !== imageId)
-        );
-      });
+  const uploadUrlOnDB = (url) => {
+    fetch("http://localhost:3000/upload", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url }),
+    }).then((response) => response.json());
   };
+
+  useEffect(() => {
+    fetch("http://localhost:3000/images")
+      .then((response) => response.json())
+      .then((data) => {
+        const urls = data.images.map((image) => image.url);
+        setDisplayImages(urls);
+      });
+  }, []);
 
   return (
     <section className="w-screen flex flex-col items-center">
@@ -74,25 +75,15 @@ const PhotoContainer = () => {
       )}
 
       <div className="flex flex-col-reverse items-center gap-8 w-full py-20">
-        {imageData.map((image, i) => (
-          <div key={i} className="h-[500px] relative">
-            <BsCloudUpload className="text-2xl text-white absolute left-3 top-5" />
-            <BsFillTrashFill
-              className="text-2xl text-white absolute right-3 top-5"
-              onClick={() => deleteImageHandler(image)}
-            />
-            <img
-              src={image.url}
-              alt="Picture of the author"
-              layout="fill"
-              objectFit="cover"
-              className="h-[100%]"
-            />
-          </div>
+        {displayImages.map((data, i) => (
+          <Image
+            className="w-[80%] object-cover"
+            src={data}
+            key={i}
+            alt="coco"
+          />
         ))}
       </div>
     </section>
   );
-};
-
-export default PhotoContainer;
+}
