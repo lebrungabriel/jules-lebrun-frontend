@@ -6,7 +6,7 @@ const Auth = () => {
   return (
     <>
       <Navbar />
-      <div className="h-[60vh] flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center">
         <Form />
       </div>
     </>

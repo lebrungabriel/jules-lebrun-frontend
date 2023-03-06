@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Image } from "@chakra-ui/react";
+import { BsFillTrashFill } from "react-icons/bs";
 
 import { Progress } from "@chakra-ui/react";
 
-export default function PhotoContainer() {
+const PhotoContainer = () => {
   const [imageUpload, setImageUpload] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [displayImages, setDisplayImages] = useState([]);
+
+  const tokenSelector = useSelector((state) => state.user.value);
 
   const uploadImageHandler = () => {
     const data = new FormData();
@@ -23,44 +27,56 @@ export default function PhotoContainer() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setDisplayImages((prevImages) => [...prevImages, data.url]);
-        uploadUrlOnDB(data.url);
+        uploadUrlOnDB(data);
         setIsLoading(false);
       });
   };
 
-  const uploadUrlOnDB = (url) => {
-    fetch("http://localhost:3000/upload", {
+  const uploadUrlOnDB = (image) => {
+    fetch("https://jules-lebrun-backend.vercel.app/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url }),
-    }).then((response) => response.json());
+      body: JSON.stringify({ url: image.url, public_id: image.public_id }),
+    })
+      .then((response) => response.json())
+      .then((data) => setDisplayImages([...displayImages, data.image]));
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/images")
+    fetch("https://jules-lebrun-backend.vercel.app/images")
       .then((response) => response.json())
       .then((data) => {
-        const urls = data.images.map((image) => image.url);
-        setDisplayImages(urls);
+        setDisplayImages(data.images);
       });
   }, []);
 
+  const deleteHandler = (image) => {
+    fetch(`https://jules-lebrun-backend.vercel.app/delete/${image._id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setDisplayImages([...data.images]);
+      });
+  };
+
   return (
     <section className="w-screen flex flex-col items-center">
-      <div className="flex flex-col items-center h-[200px] w-[90%] shadow-xl justify-evenly">
-        <input
-          type="file"
-          onChange={(e) => setImageUpload(e.target.files[0])}
-          className="pl-10"
-        />
-        <button
-          className="border border-black py-2 px-10 rounded-2xl"
-          onClick={() => uploadImageHandler()}
-        >
-          Publier
-        </button>
-      </div>
+      {tokenSelector.token && (
+        <div className="flex flex-col items-center h-[200px] w-[90%] shadow-xl justify-evenly">
+          <input
+            type="file"
+            onChange={(e) => setImageUpload(e.target.files[0])}
+            className="pl-10"
+          />
+          <button
+            className="border border-black py-2 px-10 rounded-2xl"
+            onClick={() => uploadImageHandler()}
+          >
+            Publier
+          </button>
+        </div>
+      )}
 
       {isLoading && (
         <div className="w-[90%]">
@@ -75,15 +91,24 @@ export default function PhotoContainer() {
       )}
 
       <div className="flex flex-col-reverse items-center gap-8 w-full py-20">
-        {displayImages.map((data, i) => (
-          <Image
-            className="w-[80%] object-cover"
-            src={data}
-            key={i}
-            alt="coco"
-          />
+        {displayImages.map((image, i) => (
+          <div key={i} className="w-[85%] relative">
+            <Image
+              className="w-[100%] object-cover"
+              src={image.url}
+              alt="coco"
+            />
+            <div
+              className="bg-slate-100 flex  justify-center items-center rounded-full absolute top-6 right-4 w-[50px] h-[50px]"
+              onClick={() => deleteHandler(image)}
+            >
+              <BsFillTrashFill className="text-black text-xl" />
+            </div>
+          </div>
         ))}
       </div>
     </section>
   );
-}
+};
+
+export default PhotoContainer;

@@ -1,10 +1,5 @@
 import React from "react";
-// import Image from "next/image";
 import { Image } from "@chakra-ui/react";
-// import antoine02 from "assets/antoine02.jpg";
-// import antoine03 from "assets/antoine03.jpg";
-// import sarah01 from "assets/sarah01.jpg";
-// import antoine04 from "assets/antoine04.jpg";
 
 const HeroSection = () => {
   return (

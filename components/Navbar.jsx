@@ -1,21 +1,37 @@
 import React from "react";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 import Link from "next/link";
-import DrawerNav from "./Drawer";
+import { FiLogOut } from "react-icons/fi";
 import ChakraDrawer from "./ChakraDrawer";
+import { removeTokenToStore } from "../reducers/user";
 
 const Navbar = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const tokenSelector = useSelector((state) => state.user.value);
+  console.log(tokenSelector.token);
+
+  const logoutHandler = () => {
+    dispatch(removeTokenToStore());
+    router.push("/");
+  };
 
   return (
     <>
-      <nav className="flex flex-col justify-evenly items-center h-[40vh] lg:h-[300px] xl:h-[400px] w-screen">
+      <nav className="flex flex-col justify-evenly relative items-center h-[40vh] lg:h-[300px] xl:h-[400px] w-screen">
         <Link href="/">
           <div className="w-full flex flex-col items-center justify-center h-[50%}">
             <h1 className="text-center text-2xl md:text-4xl">Jules Lebrun</h1>
             <h4>Réalisateur - Photographe</h4>
           </div>
         </Link>
+        {tokenSelector.token && (
+          <FiLogOut
+            className="absolute top-10 right-10 text-2xl"
+            onClick={() => logoutHandler()}
+          />
+        )}
 
         <ChakraDrawer />
 
