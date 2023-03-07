@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import antoine01 from "../images/antoine01.jpg";
+import antoine02 from "../images/antoine02.jpg";
 
 const DUMMY_COVER_NAME = ["Keroue", "Neyt", "Dale", "Assaf"];
 const DUMMY_COVER_EP = ["KER", "2020", "Préface", "Asf"];
@@ -10,7 +10,7 @@ const CoverSection = () => {
     <section className="w-screen gap-x-2 gap-y-10 p-2 py-10 grid grid-cols-1 place-items-center items-center lg:grid-cols-2">
       <div>
         <Image
-          src={antoine01}
+          src={antoine02}
           alt="cover-image"
           width="400px"
           height="400px"
@@ -24,7 +24,7 @@ const CoverSection = () => {
       </div>
       <div>
         <Image
-          src={antoine01}
+          src={antoine02}
           alt="cover-image"
           width="400px"
           height="400px"
