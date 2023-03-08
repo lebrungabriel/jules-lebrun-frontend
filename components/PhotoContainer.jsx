@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useSelector } from "react-redux";
 import { Image } from "@chakra-ui/react";
 import { BsFillTrashFill } from "react-icons/bs";
@@ -95,21 +94,11 @@ const PhotoContainer = () => {
       <div className="flex flex-col-reverse items-center gap-8 w-full py-20">
         {displayImages.map((image, i) => (
           <div key={i} className="w-[85%] sm:w-[40%] lg:w-[25%] relative">
-            {isLoading ? (
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="blue.500"
-                size="xl"
-              />
-            ) : (
-              <Image
-                className="w-[100%] object-cover"
-                src={image.url}
-                alt="coco"
-              />
-            )}
+            <Image
+              className="w-[100%] object-cover"
+              src={image.url}
+              alt="coco"
+            />
 
             {tokenSelector.token && (
               <div

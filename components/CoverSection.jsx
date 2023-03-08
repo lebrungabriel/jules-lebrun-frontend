@@ -15,10 +15,10 @@ const CoverSection = () => {
           height="300px"
           objectFit="cover"
         />
-        <div className="flex justify-evenly py-4">
-          <h3>Assaf</h3>
-          <h4>EP 2020</h4>
-          <h5>10/03/1994</h5>
+        <div className="flex justify-evenly py-2">
+          <p>
+            Neyt - <span className="italic">Lone</span>
+          </p>
         </div>
       </div>
       <div>
@@ -29,10 +29,10 @@ const CoverSection = () => {
           height="300px"
           objectFit="cover"
         />
-        <div className="flex justify-evenly py-4">
-          <h3>Assaf</h3>
-          <h4>EP 2020</h4>
-          <h5>10/03/1994</h5>
+        <div className="flex justify-evenly py-2">
+          <p>
+            Neyt - <span className="italic">Still</span>
+          </p>
         </div>
       </div>
       <div>
@@ -43,10 +43,10 @@ const CoverSection = () => {
           height="300px"
           objectFit="cover"
         />
-        <div className="flex justify-evenly py-4">
-          <h3>Assaf</h3>
-          <h4>EP 2020</h4>
-          <h5>10/03/1994</h5>
+        <div className="flex justify-evenly py-2">
+          <p>
+            Dalé - <span className="italic">Préface</span>
+          </p>
         </div>
       </div>
       <div>
@@ -57,10 +57,10 @@ const CoverSection = () => {
           height="300px"
           objectFit="cover"
         />
-        <div className="flex justify-evenly py-4">
-          <h3>Assaf</h3>
-          <h4>EP 2020</h4>
-          <h5>10/03/1994</h5>
+        <div className="flex justify-evenly py-2">
+          <p>
+            Assaf - <span className="italic">2020</span>
+          </p>
         </div>
       </div>
     </section>

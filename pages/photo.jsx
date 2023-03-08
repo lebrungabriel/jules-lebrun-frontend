@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Suspense } from "react";
+import Loading from "../components/loading";
 
 import Navbar from "../components/Navbar";
 import PhotoContainer from "../components/PhotoContainer";
@@ -7,7 +8,9 @@ const Photo = () => {
   return (
     <>
       <Navbar />
-      <PhotoContainer />
+      <Suspense fallback={<Loading />}>
+        <PhotoContainer />
+      </Suspense>
     </>
   );
 };
