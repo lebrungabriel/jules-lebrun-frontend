@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Image } from "@chakra-ui/react";
 import { BsFillTrashFill } from "react-icons/bs";
 
-import { Progress } from "@chakra-ui/react";
+import { Progress, Spinner } from "@chakra-ui/react";
 
 const PhotoContainer = () => {
   const [imageUpload, setImageUpload] = useState("");
@@ -43,11 +43,13 @@ const PhotoContainer = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("https://jules-lebrun-backend.vercel.app/images")
       .then((response) => response.json())
       .then((data) => {
         setDisplayImages(data.images);
       });
+    setIsLoading(false);
   }, []);
 
   const deleteHandler = (image) => {
@@ -93,6 +95,15 @@ const PhotoContainer = () => {
       <div className="flex flex-col-reverse items-center gap-8 w-full py-20">
         {displayImages.map((image, i) => (
           <div key={i} className="w-[85%] sm:w-[40%] lg:w-[25%] relative">
+            {isLoading && (
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="blue.500"
+                size="xl"
+              />
+            )}
             <Image
               className="w-[100%] object-cover"
               src={image.url}
