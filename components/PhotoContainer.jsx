@@ -62,7 +62,7 @@ const PhotoContainer = () => {
   };
 
   return (
-    <section className="w-screen flex flex-col items-center">
+    <section className="container mx-auto flex flex-col items-center">
       {tokenSelector.token && (
         <div className="flex flex-col items-center h-[200px] w-[90%] shadow-xl justify-evenly">
           <input

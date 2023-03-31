@@ -6,7 +6,7 @@ const DUMMY_COVER_EP = ["KER", "2020", "Préface", "Asf"];
 
 const CoverSection = () => {
   return (
-    <section className="w-screen gap-x-2 gap-y-10 p-2 py-10 grid grid-cols-1 place-items-center items-center lg:grid-cols-2">
+    <section className="container mx-auto gap-x-2 gap-y-10 p-2 py-10 grid grid-cols-1 place-items-center items-center lg:grid-cols-2">
       <div>
         <Image
           src="/assets/neyt-still.jpeg"

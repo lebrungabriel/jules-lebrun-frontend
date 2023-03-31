@@ -5,7 +5,7 @@ import { GrMail } from "react-icons/gr";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col justify-center items-center h-[200px] w-screen p-2 mt-10">
+    <footer className="container mx-auto flex flex-col justify-center items-center h-[200px] w-screen p-2 mt-10">
       <div className="h-[1px] w-[50%] bg-gray-400"></div>
       <ul className="flex justify-around bt-1 items-center w-full  w-full h-full">
         <li className="flex flex-col items-center justify-center">
