@@ -102,10 +102,10 @@ const PhotoContainer = () => {
 
             {tokenSelector.token && (
               <div
-                className="bg-slate-100 flex  justify-center items-center rounded-full absolute top-6 right-4 w-[50px] h-[50px]"
+                className="bg-slate-100 flex  justify-center items-center rounded-full absolute top-6 right-4 w-[30px] h-[30px]"
                 onClick={() => deleteHandler(image)}
               >
-                <BsFillTrashFill className="text-black text-xl" />
+                <BsFillTrashFill className="text-black text-md cursor-pointer" />
               </div>
             )}
           </div>

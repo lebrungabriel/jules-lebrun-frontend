@@ -18,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <section className="container mx-auto flex flex-col justify-evenly relative items-center h-[180px] lg:h-[300px] xl:h-[400px]">
+    <section className="container mx-auto flex flex-col justify-evenly relative items-center h-[180px] lg:h-[230px]">
       <Link href="/">
         <div className="w-full flex flex-col items-center justify-center h-[50%} cursor-pointer">
           <h1 className="text-center text-2xl md:text-4xl">Jules Lebrun</h1>
