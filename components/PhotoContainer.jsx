@@ -42,10 +42,10 @@ const PhotoContainer = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("https://jules-lebrun-backend.vercel.app/images")
       .then((response) => response.json())
       .then((data) => {
-        setIsLoading(true);
         setDisplayImages(data.images);
         setIsLoading(false);
       });
@@ -79,37 +79,29 @@ const PhotoContainer = () => {
         </div>
       )}
 
-      {isLoading && (
-        <div className="w-[90%]">
-          <Progress
-            value={100}
-            hasStripe
-            colorScheme="blue"
-            isIndeterminate
-            height="2px"
-          />
-        </div>
-      )}
-
       <div className="flex flex-col-reverse items-center gap-8 w-full py-20">
-        {displayImages.map((image, i) => (
-          <div key={i} className="w-[85%] sm:w-[40%] lg:w-[25%] relative">
-            <Image
-              className="w-[100%] object-cover"
-              src={image.url}
-              alt="coco"
-            />
+        {isLoading ? (
+          <Spinner size="xl" />
+        ) : (
+          displayImages.map((image, i) => (
+            <div key={i} className="w-[85%] sm:w-[40%] lg:w-[25%] relative">
+              <Image
+                className="w-[100%] object-cover"
+                src={image.url}
+                alt="coco"
+              />
 
-            {tokenSelector.token && (
-              <div
-                className="bg-slate-100 flex  justify-center items-center rounded-full absolute top-6 right-4 w-[30px] h-[30px]"
-                onClick={() => deleteHandler(image)}
-              >
-                <BsFillTrashFill className="text-black text-md cursor-pointer" />
-              </div>
-            )}
-          </div>
-        ))}
+              {tokenSelector.token && (
+                <div
+                  className="bg-slate-100 flex  justify-center items-center rounded-full absolute top-6 right-4 w-[30px] h-[30px]"
+                  onClick={() => deleteHandler(image)}
+                >
+                  <BsFillTrashFill className="text-black text-md cursor-pointer" />
+                </div>
+              )}
+            </div>
+          ))
+        )}
       </div>
     </section>
   );
