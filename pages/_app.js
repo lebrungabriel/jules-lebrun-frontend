@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
+import Head from "next/head";
 
 import { Provider } from "react-redux";
 
@@ -27,6 +28,13 @@ function App({ Component, pageProps }) {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <ChakraProvider>
+          <Head>
+            <title>Jules Lebrun - Réalisateur/Photographe</title>
+            <meta
+              name="description"
+              content="Jules Lebrun - Réalisateur/Photographe basé à Paris"
+            />
+          </Head>
           <Component {...pageProps} />
         </ChakraProvider>
       </PersistGate>

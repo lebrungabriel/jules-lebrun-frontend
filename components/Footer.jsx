@@ -9,22 +9,26 @@ const Footer = () => {
       <div className="h-[1px] w-[50%] bg-gray-400"></div>
       <ul className="flex justify-around bt-1 items-center w-full  w-full h-full">
         <li className="flex flex-col items-center justify-center">
-          <a href="#">
+          <a
+            href="https://instagram.com/alba.toz?igshid=MTIyMzRjYmRlZg=="
+            target="_blank"
+            className="flex flex-col items-center"
+          >
             <AiFillInstagram className="w-[30px] h-[30px] text-zinc-800 mb-2 hover:text-zinc-600" />
+            <p>instagram</p>
           </a>
-          <p>instagram</p>
         </li>
         <li className="hidden md:flex md:flex-col md:items-center md:justify-center">
-          <a href="#">
+          <div className="flex flex-col items-center">
             <MdLocationOn className="w-[30px] h-[30px] text-zinc-800 mb-2 hover:text-zinc-600" />
-          </a>
-          <p>Paris FR.</p>
+            <p>Paris FR.</p>
+          </div>
         </li>
         <li className="flex flex-col items-center justify-center">
-          <a href="#">
+          <div className="flex flex-col items-center">
             <GrMail className="w-[30px] h-[30px] text-zinc-800 mb-2 hover:text-zinc-600" />
-          </a>
-          <p>jules@gmail.com</p>
+            <p>albatoz.contact@gmail.com</p>
+          </div>
         </li>
       </ul>
     </footer>
