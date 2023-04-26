@@ -10,6 +10,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const tokenSelector = useSelector((state) => state.user.value);
+  console.log(tokenSelector.token);
 
   const logoutHandler = () => {
     dispatch(removeTokenToStore());
@@ -34,25 +35,25 @@ const Navbar = () => {
       <ChakraDrawer />
 
       <div className="hidden md:flex md:justify-evenly w-full">
-        <div className="h-[40px] w-[150px] flex justify-center hover-underline-animation">
+        <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation">
           <a href="/photo" className="md:text-lg lg:text-xl xl:text-xl">
             Photos
           </a>
         </div>
 
-        <div className="h-[40px] w-[150px] flex justify-center hover-underline-animation">
+        <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation">
           <a href="/clips" className="md:text-lg lg:text-xl xl:text-xl">
             Clips
           </a>
         </div>
 
-        <div className="h-[40px] w-[150px] flex justify-center hover-underline-animation">
+        <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation">
           <a href="/cover" className="md:text-lg lg:text-xl xl:text-xl">
             Cover
           </a>
         </div>
 
-        <div className="h-[40px] w-[150px] flex justify-center hover-underline-animation">
+        <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation">
           <a href="/films" className="md:text-lg lg:text-xl xl:text-xl">
             Films
           </a>
