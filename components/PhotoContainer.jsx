@@ -1,9 +1,8 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Image } from "@chakra-ui/react";
-import { BsFillTrashFill } from "react-icons/bs";
-
-import { Progress, Spinner } from "@chakra-ui/react";
+import Image from "next/image";
+import { Spinner } from "@chakra-ui/react";
+import { BsFillTrashFill, BsChevronUp } from "react-icons/bs";
 
 const PhotoContainer = () => {
   const [imageUpload, setImageUpload] = useState("");
@@ -11,6 +10,13 @@ const PhotoContainer = () => {
   const [displayImages, setDisplayImages] = useState([]);
 
   const tokenSelector = useSelector((state) => state.user.value);
+
+  const isBrowser = () => typeof window !== "undefined";
+
+  const scrollToTop = () => {
+    if (!isBrowser()) return;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const uploadImageHandler = () => {
     const data = new FormData();
@@ -84,11 +90,15 @@ const PhotoContainer = () => {
           <Spinner size="xl" />
         ) : (
           displayImages.map((image, i) => (
-            <div key={i} className="w-[85%] sm:w-[40%] lg:w-[25%] relative">
+            <div
+              key={i}
+              className="w-[90%] h-[500px] sm:w-[40%] lg:w-[30%] relative"
+            >
               <Image
-                className="w-[100%] object-cover"
+                className="w-full h-full object-cover"
                 src={image.url}
-                alt="coco"
+                alt="photo"
+                layout="fill"
               />
 
               {tokenSelector.token && (
@@ -102,6 +112,12 @@ const PhotoContainer = () => {
             </div>
           ))
         )}
+      </div>
+      <div
+        className="fixed bottom-3 right-3 h-[40px] w-[40px] rounded-full cursor-pointer flex items-center justify-center bg-black"
+        onClick={scrollToTop}
+      >
+        <BsChevronUp className="text-white text-lg" />
       </div>
     </section>
   );

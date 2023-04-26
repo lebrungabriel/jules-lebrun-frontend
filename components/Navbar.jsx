@@ -10,7 +10,6 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const tokenSelector = useSelector((state) => state.user.value);
-  console.log(tokenSelector.token);
 
   const logoutHandler = () => {
     dispatch(removeTokenToStore());
