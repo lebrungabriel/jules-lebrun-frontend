@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Image from "next/image";
+import { Image } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/react";
 import { BsFillTrashFill, BsChevronUp } from "react-icons/bs";
 
@@ -98,10 +98,7 @@ const PhotoContainer = () => {
           <Spinner size="xl" />
         ) : (
           displayImages.map((image, i) => (
-            <div
-              key={i}
-              className="w-[80%] h-[480px] sm:w-[40%] lg:w-[30%] relative"
-            >
+            <div key={i} className="w-[80%] sm:w-[40%] lg:w-[30%] relative">
               <Image
                 className="w-full h-full object-cover"
                 src={image.url}
@@ -122,7 +119,7 @@ const PhotoContainer = () => {
         )}
       </div>
       <div
-        className="fixed bottom-3 right-3 h-[40px] w-[40px] rounded-full cursor-pointer flex items-center justify-center bg-black"
+        className="fixed bottom-4 right-4 h-[40px] w-[40px] rounded-full cursor-pointer flex items-center justify-center bg-black"
         onClick={scrollToTop}
       >
         <BsChevronUp className="text-white text-lg" />
