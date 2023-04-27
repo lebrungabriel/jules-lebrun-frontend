@@ -92,10 +92,10 @@ const PhotoContainer = () => {
           displayImages.map((image, i) => (
             <div
               key={i}
-              className="w-[90%] h-[500px] sm:w-[40%] lg:w-[30%] relative"
+              className="w-[80%] h-[480px] sm:w-[40%] lg:w-[300px] relative"
             >
               <Image
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
                 src={image.url}
                 alt="photo"
                 layout="fill"
