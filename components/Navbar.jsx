@@ -21,8 +21,10 @@ const Navbar = () => {
     <section className="container mx-auto flex flex-col justify-evenly relative items-center h-[180px] lg:h-[230px]">
       <Link href="/">
         <div className="w-full flex flex-col items-center justify-center h-[50%} cursor-pointer">
-          <h1 className="text-center text-2xl md:text-4xl">Jules Lebrun</h1>
-          <h4>Réalisateur - Photographe</h4>
+          <h1 className="text-center text-2xl md:text-4xl tracking-widest">
+            Jules Lebrun
+          </h1>
+          <h4 className="tracking-wider">Réalisateur - Photographe</h4>
         </div>
       </Link>
       {tokenSelector.token && (
@@ -36,25 +38,37 @@ const Navbar = () => {
 
       <div className="hidden md:flex md:justify-evenly w-full">
         <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation">
-          <a href="/photo" className="md:text-lg lg:text-xl xl:text-xl">
+          <a
+            href="/photo"
+            className="tracking-wider md:text-lg lg:text-xl xl:text-xl"
+          >
             Photos
           </a>
         </div>
 
         <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation">
-          <a href="/clips" className="md:text-lg lg:text-xl xl:text-xl">
+          <a
+            href="/clips"
+            className="tracking-wider md:text-lg lg:text-xl xl:text-xl"
+          >
             Clips
           </a>
         </div>
 
         <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation">
-          <a href="/cover" className="md:text-lg lg:text-xl xl:text-xl">
+          <a
+            href="/cover"
+            className="tracking-wider md:text-lg lg:text-xl xl:text-xl"
+          >
             Cover
           </a>
         </div>
 
         <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation">
-          <a href="/films" className="md:text-lg lg:text-xl xl:text-xl">
+          <a
+            href="/films"
+            className="tracking-wider md:text-lg lg:text-xl xl:text-xl"
+          >
             Films
           </a>
         </div>
