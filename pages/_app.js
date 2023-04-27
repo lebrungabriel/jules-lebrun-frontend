@@ -34,6 +34,10 @@ function App({ Component, pageProps }) {
               name="description"
               content="Jules Lebrun - Réalisateur/Photographe basé à Paris"
             />
+            <meta
+              name="google-site-verification"
+              content="hWjhmfXw89A3cwW4lxze_jtmcfwZykzPRrow_Zw5azE"
+            />
           </Head>
           <Component {...pageProps} />
         </ChakraProvider>
