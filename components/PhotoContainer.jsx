@@ -8,6 +8,7 @@ const PhotoContainer = () => {
   const [imageUpload, setImageUpload] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [displayImages, setDisplayImages] = useState([]);
+  const [isChecked, setIsChecked] = useState(false);
 
   const tokenSelector = useSelector((state) => state.user.value);
 
@@ -41,10 +42,17 @@ const PhotoContainer = () => {
     fetch("https://jules-lebrun-backend.vercel.app/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url: image.url, public_id: image.public_id }),
+      body: JSON.stringify({
+        url: image.url,
+        public_id: image.public_id,
+        landscape: image.landscape,
+      }),
     })
       .then((response) => response.json())
-      .then((data) => setDisplayImages([...displayImages, data.image]));
+      .then((data) => {
+        console.log("DATA RESPONSE NEW : ", data);
+        setDisplayImages([...displayImages, data.image]);
+      });
   };
 
   useEffect(() => {
@@ -70,7 +78,7 @@ const PhotoContainer = () => {
   return (
     <section className="container mx-auto flex flex-col items-center">
       {tokenSelector.token && (
-        <div className="flex flex-col items-center h-[200px] w-[90%] shadow-xl justify-evenly">
+        <div className="flex flex-col items-center h-[220px] w-[90%] shadow-xl justify-evenly">
           <input
             type="file"
             onChange={(e) => setImageUpload(e.target.files[0])}
@@ -92,10 +100,10 @@ const PhotoContainer = () => {
           displayImages.map((image, i) => (
             <div
               key={i}
-              className="w-[80%] h-[480px] sm:w-[40%] lg:w-[300px] relative"
+              className="w-[80%] h-[480px] sm:w-[40%] lg:w-[30%] relative"
             >
               <Image
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
                 src={image.url}
                 alt="photo"
                 layout="fill"
