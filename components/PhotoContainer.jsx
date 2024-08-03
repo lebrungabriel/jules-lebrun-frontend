@@ -36,9 +36,9 @@ const PhotoContainer = () => {
         setIsLoading(false);
       });
   };
-  // https://jules-lebrun-backend.vercel.app/
+
   const uploadUrlOnDB = (image) => {
-    fetch("http://localhost:3000/upload", {
+    fetch("https://jules-lebrun-backend.vercel.app/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -55,7 +55,7 @@ const PhotoContainer = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:3000/images")
+    fetch("https://jules-lebrun-backend.vercel.app/images")
       .then((response) => response.json())
       .then((data) => {
         setDisplayImages(data.images);
@@ -64,7 +64,7 @@ const PhotoContainer = () => {
   }, []);
 
   const deleteHandler = (image) => {
-    fetch(`http://localhost:3000/delete/${image._id}`, {
+    fetch(`https://jules-lebrun-backend.vercel.app/delete/${image._id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
