@@ -37,7 +37,7 @@ const CoverSection = () => {
       </div>
       <div>
         <Image
-          src="/assets/neyt-still.jpeg"
+          src="/assets/neyt-ahah.jpg"
           alt="cover-image"
           width="300px"
           height="300px"
@@ -45,7 +45,7 @@ const CoverSection = () => {
         />
         <div className="flex justify-evenly py-2">
           <p>
-            Neyt - <span className="italic">Still</span>
+            Neyt - <span className="italic">Ahah</span>
           </p>
         </div>
       </div>

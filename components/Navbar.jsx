@@ -37,7 +37,7 @@ const Navbar = () => {
       <ChakraDrawer />
 
       <div className="hidden md:flex md:justify-evenly w-full">
-        <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation">
+        <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation cursor-pointer">
           <a
             href="/photo"
             className="tracking-wider md:text-lg lg:text-xl xl:text-xl"
@@ -46,7 +46,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation">
+        <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation cursor-pointer">
           <a
             href="/clips"
             className="tracking-wider md:text-lg lg:text-xl xl:text-xl"
@@ -55,7 +55,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation">
+        <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation cursor-pointer">
           <a
             href="/cover"
             className="tracking-wider md:text-lg lg:text-xl xl:text-xl"
@@ -64,7 +64,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation">
+        <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation cursor-pointer">
           <a
             href="/films"
             className="tracking-wider md:text-lg lg:text-xl xl:text-xl"

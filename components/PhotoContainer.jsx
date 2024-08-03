@@ -8,7 +8,6 @@ const PhotoContainer = () => {
   const [imageUpload, setImageUpload] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [displayImages, setDisplayImages] = useState([]);
-  const [isChecked, setIsChecked] = useState(false);
 
   const tokenSelector = useSelector((state) => state.user.value);
 
@@ -37,9 +36,9 @@ const PhotoContainer = () => {
         setIsLoading(false);
       });
   };
-
+  // https://jules-lebrun-backend.vercel.app/
   const uploadUrlOnDB = (image) => {
-    fetch("https://jules-lebrun-backend.vercel.app/upload", {
+    fetch("http://localhost:3000/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -50,14 +49,13 @@ const PhotoContainer = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("DATA RESPONSE NEW : ", data);
-        setDisplayImages([...displayImages, data.image]);
+        setDisplayImages([data.image, ...displayImages]);
       });
   };
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://jules-lebrun-backend.vercel.app/images")
+    fetch("http://localhost:3000/images")
       .then((response) => response.json())
       .then((data) => {
         setDisplayImages(data.images);
@@ -66,7 +64,7 @@ const PhotoContainer = () => {
   }, []);
 
   const deleteHandler = (image) => {
-    fetch(`https://jules-lebrun-backend.vercel.app/delete/${image._id}`, {
+    fetch(`http://localhost:3000/delete/${image._id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -93,7 +91,8 @@ const PhotoContainer = () => {
         </div>
       )}
 
-      <div className="flex flex-col-reverse items-center gap-8 w-full py-20">
+      <div className="flex flex-col items-center gap-8 w-full py-20">
+        {!displayImages && <div>shit</div>}
         {isLoading ? (
           <Spinner size="xl" />
         ) : (
