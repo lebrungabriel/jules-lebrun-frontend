@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "../styles/fonts.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import Head from "next/head";
 

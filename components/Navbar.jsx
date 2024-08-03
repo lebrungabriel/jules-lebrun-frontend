@@ -21,7 +21,7 @@ const Navbar = () => {
     <section className="container mx-auto flex flex-col justify-evenly relative items-center h-[180px] lg:h-[230px]">
       <Link href="/">
         <div className="w-full flex flex-col items-center justify-center h-[50%} cursor-pointer">
-          <h1 className="text-center text-2xl md:text-4xl tracking-widest">
+          <h1 className="text-center text-2xl md:text-4xl font-custom tracking-widest">
             Jules Lebrun
           </h1>
           <h4 className="tracking-wider">Réalisateur - Photographe</h4>
@@ -36,11 +36,11 @@ const Navbar = () => {
 
       <ChakraDrawer />
 
-      <div className="hidden md:flex md:justify-evenly w-full">
+      <div className="hidden md:flex md:justify-evenly w-full font-custom">
         <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation cursor-pointer">
           <a
             href="/photo"
-            className="tracking-wider md:text-lg lg:text-xl xl:text-xl"
+            className="tracking-widest md:text-lg lg:text-xl xl:text-xl"
           >
             Photos
           </a>
@@ -49,7 +49,7 @@ const Navbar = () => {
         <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation cursor-pointer">
           <a
             href="/clips"
-            className="tracking-wider md:text-lg lg:text-xl xl:text-xl"
+            className="tracking-widest md:text-lg lg:text-xl xl:text-xl"
           >
             Clips
           </a>
@@ -58,7 +58,7 @@ const Navbar = () => {
         <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation cursor-pointer">
           <a
             href="/cover"
-            className="tracking-wider md:text-lg lg:text-xl xl:text-xl"
+            className="tracking-widest md:text-lg lg:text-xl xl:text-xl"
           >
             Cover
           </a>
@@ -67,7 +67,7 @@ const Navbar = () => {
         <div className="h-[40px] w-[150px] lg:flex lg:justify-center lg:items-center hover-underline-animation cursor-pointer">
           <a
             href="/films"
-            className="tracking-wider md:text-lg lg:text-xl xl:text-xl"
+            className="tracking-widest md:text-lg lg:text-xl xl:text-xl"
           >
             Films
           </a>
